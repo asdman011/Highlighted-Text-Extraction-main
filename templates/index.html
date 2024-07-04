@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlighted Text Extraction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3uH75e5PIcF2e4L+5BldcRD+9M1gZblJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body class="text-center">
+    <div class="container mt-5">
+        <h1 class="mb-4">Highlighted Text Extraction</h1>
+
+        <form action="/" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="docxFile" class="form-label">Upload DOCX File:</label>
+                <input type="file" name="docxFile" class="form-control" accept=".docx" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Extract Text</button>
+        </form>
+
+        {% if documents %}
+            <div class="mt-5">
+                <h2>Uploaded Documents</h2>
+                <table class="table mt-3">
+                    <thead>
+                        <tr>
+                            <th>Filename</th>
+                            <th>Upload Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for document in documents %}
+                            <tr>
+                                <td>{{ document.filename }}</td>
+                                <td>{{ document.upload_date }}</td>
+                                <td>
+                                    <a href="{{ url_for('highlights', doc_id=document.doc_id) }}" class="btn btn-info">View Highlights</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <span class="text-muted">View the source code on <a href="https://github.com/asdman011/Highlight_Extractor" target="_blank">GitHub</a></span>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-3HOQGRRKcPOqHOgXvZiEZ6TG/6iWNbrjzIjASJoRQZ0hGBUR9RMNQ1pU4vKEcKE3" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3uH75e5PIcF2e4L+5BldcRD+9M1gZblJ" crossorigin="anonymous"></script>
+</body>
+
+</html>

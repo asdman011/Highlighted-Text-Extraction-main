@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlights for {{ document.filename }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3uH75e5PIcF2e4L+5BldcRD+9M1gZblJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="text-center">
+<div class="container mt-5">
+    <h1 class="mb-4">Highlights for {{ document.filename }}</h1>
+    <table class="table mt-3">
+        <thead>
+        <tr>
+            <th>Color</th>
+            <th>Highlighted Text</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for color, texts in highlighted_data.items() %}
+            {% for text in texts %}
+                <tr>
+                    <td>{{ color }}</td>
+                    <td>{{ text }}</td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('index') }}" class="btn btn-primary mt-3">Back to Home</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-3HOQGRRKcPOqHOgXvZiEZ6TG/6iWNbrjzIjASJoRQZ0hGBUR9RMNQ1pU4vKEcKE3"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy3uH75e5PIcF2e4L+5BldcRD+9M1gZblJ"
+        crossorigin="anonymous"></script>
+</body>
+</html>
