@@ -1,22 +1,22 @@
 body {
     background-color: rgba(46, 199, 166, 0.5);
     color: #1a4449;
-    height: auto;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    margin: 0;
 }
 
 .container {
     width: 80%;
-    position: static;
     height: fit-content;
     background-color: rgba(46, 199, 166, 0.5);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;  /* Allow the container to grow and fill available space */
 }
+
 
 form {
     margin-top: 20px;
@@ -76,15 +76,14 @@ td {
     overflow: auto;
 }
 
-.footer {
-    position: fixed;
-    left: 0;
-    padding: 10px;
-    bottom: 0;
-    width: 100%;
+/* Footer styles */
+footer {
     background-color: #2eb36593;
     color: white;
+    padding: 10px 0;
     text-align: center;
+    width: 100%;
+    position: relative;
 }
 
 .footer .text-muted {
